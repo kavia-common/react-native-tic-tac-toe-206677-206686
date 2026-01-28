@@ -6,7 +6,7 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
+    "web": "node -e \"const {execSync}=require('node:child_process'); try{execSync('lsof -ti tcp:3000 | xargs -r kill -9',{stdio:'ignore'});}catch(e){}\" && expo start --web --port 3000 --host localhost",
     "lint": "eslint .",
     "prebuild:android": "expo prebuild --platform android",
     "build": "npm run prebuild:android && cd android && ./gradlew assembleDebug"
